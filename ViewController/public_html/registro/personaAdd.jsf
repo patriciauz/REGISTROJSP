@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html>
+<f:view xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html">
+    <html xmlns="http://www.w3.org/1999/xhtml">
+        <h:head>
+            <title>personaAdd</title>
+        </h:head>
+        <h:body>
+            <h:form>
+                <h:messages/>
+                <h:panelGrid columns="2">
+                    <h:outputText value="Tipo identificacion"/>
+                    <h:selectOneMenu value="#{registroMB.persona.tipoidentificacion}">
+                        <f:selectItem itemLabel="" itemValue=""/>
+                        <f:selectItems value="#{registroMB.tipoIdentificacionList}"/>
+                    </h:selectOneMenu>
+                    <h:outputText value="Numero identificacion"/>
+                    <h:inputText value="#{registroMB.persona.numeroidentificacion}"/>
+                    <h:outputText value="Nombre completo"/>
+                    <h:inputText value="#{registroMB.persona.nombrecompleto}"/>
+                    <h:outputText value="Semestre"/>
+                    <h:selectOneMenu value="#{registroMB.persona.semestre}">
+                        <f:selectItem itemLabel="" itemValue=""/>
+                        <f:selectItems value="#{registroMB.semestreList}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:panelGrid columns="2">
+                    <h:commandButton value="Agregar" action="#{registroMB.addPersonaAction}"/>
+                     <h:commandButton value="Regresar" action="#{registroMB.goBackAction}"/>
+                </h:panelGrid>
+               
+            </h:form>
+        </h:body>
+    </html>
+</f:view>

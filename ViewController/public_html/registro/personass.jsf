@@ -1,0 +1,64 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html>
+<f:view xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html">
+    <html xmlns="http://www.w3.org/1999/xhtml">
+        <h:head>
+            <title>index</title>
+        </h:head>
+        <h:body>
+            <h:form>
+            <h:messages/>
+                <h:panelGrid columns="2">
+                    <h:outputText value="Numero identificacion"/>
+                    <h:inputText value="#{registroMB.paramNumeroIdentificacion}"/>
+                </h:panelGrid>
+                <h:panelGrid columns="2">
+                    <h5> "Si elimina a la persona todo el seguimiento se eliminara"</h5>
+                    
+                </h:panelGrid>
+                <h:commandButton value="Buscar" action="#{registroMB.findPersonassAction}"/>
+                <h:dataTable var="persona" value="#{registroMB.personalist}" rendered="#{registroMB.renderedShwPersona}"
+                             border="1">
+                    <f:facet name="header">
+                        <h:outputText value="Personas"/>
+                    </f:facet>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Tipo documento"/>
+                        </f:facet>
+                        <h:outputText value="#{persona.tipoidentificacion}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="numero identificacion"/>
+                        </f:facet>
+                        <h:outputText value="#{persona.numeroidentificacion}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="nombre completo"/>
+                        </f:facet>
+                        <h:outputText value="#{persona.nombrecompleto}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Semestre"/>
+                        </f:facet>
+                        <h:outputText value="#{persona.semestre}"/>
+                    </h:column>
+                    <h:column>
+                        <h:commandLink immediate="true" status="status" render="form_panel"
+                                       action="#{registroMB.removeAction}">
+                            <f:setPropertyActionListener value="#{persona}" target="#{registroMB.persona}"/>
+                            <h:outputText value="eliminar"></h:outputText>
+                        </h:commandLink>
+                    </h:column>
+                </h:dataTable>
+                <h:panelGrid columns="1">
+                 <h:commandButton value="Regresar" action="#{registroMB.goBackAction}"/>
+                </h:panelGrid>
+                
+            </h:form>
+        </h:body>
+    </html>
+</f:view>

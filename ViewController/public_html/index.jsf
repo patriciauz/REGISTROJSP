@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html>
+<f:view xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html">
+    <html xmlns="http://www.w3.org/1999/xhtml">
+    
+        <h:head>
+            <title>index</title>
+        </h:head>
+        <h:body >
+            <h:form>
+             <h:panelGrid columns="3">
+                    <h:commandButton value="Agregar" action="#{registroMB.goAddPersonaAction}" />
+                    <h:commandButton value="Registrar y revisar seguimiento persona" action="#{registroMB.goPersonaAction}" />
+                    <h:commandButton value="eliminar" action="#{registroMB.goPersonassAction}"  />
+                </h:panelGrid>
+            </h:form>
+        </h:body>
+    </html>
+</f:view>

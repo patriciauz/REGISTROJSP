@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html>
+<f:view xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html">
+    <html xmlns="http://www.w3.org/1999/xhtml">
+        <h:head>
+            <title>index</title>
+        </h:head>
+        <h:body>
+            <h:form>
+                <h:messages/>
+                <h:panelGrid columns="2">
+                    <h:outputText value="Numero identificacion"/>
+                    <h:inputText value="#{registroMB.paramNumeroIdentificacion}"/>
+                </h:panelGrid>
+                <h:commandButton value="Buscar" action="#{registroMB.findPersonaAction}"/>
+                <h:commandButton value="Regresar" action="#{registroMB.goBackAction}"/>
+                
+                <h:panelGrid rendered="#{registroMB.renderedAddSeguimiento}" columns="2">
+                    <h:outputText value="Tipo identificacion:"/>
+                    <h:outputText value="#{registroMB.persona.tipoidentificacion}"/>
+                    <h:outputText value="Numero de identificacion:"/>
+                    <h:outputText value="#{registroMB.persona.numeroidentificacion}"/>
+                    <h:outputText value="Nombre completo:"/>
+                    <h:outputText value="#{registroMB.persona.nombrecompleto}"/>
+                    <h:outputText value="Semestre:"/>
+                    <h:outputText value="#{registroMB.persona.semestre}"/>
+                </h:panelGrid>
+               
+                <h:dataTable var="seguimiento" value="#{registroMB.seguimientoList}" border="2"
+                             rendered="#{registroMB.renderedAddSeguimiento}">
+                  
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Hora ingreso"></h:outputText>
+                        </f:facet>
+                        <h:outputText value="#{seguimiento.fechahora}">
+                            <f:convertDateTime pattern="dd/MM/yyyy HH:mm"/>
+                        </h:outputText>
+                    </h:column>
+                </h:dataTable>
+                <h:panelGrid columns="2" rendered="#{registroMB.renderedAddSeguimiento}">
+                    <h:commandButton value="Registrar ingreso" action="#{registroMB.addSeguimientoAction}"/>
+                </h:panelGrid>
+            </h:form>
+        </h:body>
+    </html>
+</f:view>
